@@ -5,7 +5,10 @@ fn main() {
         input: &["proto_defs/verb.proto","proto_defs/index.proto","proto_defs/category.proto"],
         includes: &["proto_defs"],
         customize: protobuf_codegen_pure::Customize {
-        ..Default::default()
+            // ToDo: Wait for v3 to be released and add the option for hiding _set _get
+            // expose_fields: Some(true),
+            // generate_accessors: Some(false), 
+            ..Default::default()
         },
     }).expect("protoc");
 }
