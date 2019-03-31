@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option csharp_namespace = "ProtoVerb.Core";
+
 message Category {
     repeated string identifier = 1;
 }

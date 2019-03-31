@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option csharp_namespace = "ProtoVerb.Core";
+
 message Verb {
     string identifier = 1;
     string url = 2;
