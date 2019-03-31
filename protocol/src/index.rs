@@ -24,6 +24,176 @@ use protobuf::ProtobufEnum as ProtobufEnum_imported_for_functions;
 #[derive(PartialEq,Clone,Default)]
 pub struct Index {
     // message fields
+    pub item: ::protobuf::RepeatedField<IndexItem>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl Index {
+    pub fn new() -> Index {
+        ::std::default::Default::default()
+    }
+
+    // repeated .IndexItem item = 1;
+
+    pub fn clear_item(&mut self) {
+        self.item.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_item(&mut self, v: ::protobuf::RepeatedField<IndexItem>) {
+        self.item = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_item(&mut self) -> &mut ::protobuf::RepeatedField<IndexItem> {
+        &mut self.item
+    }
+
+    // Take field
+    pub fn take_item(&mut self) -> ::protobuf::RepeatedField<IndexItem> {
+        ::std::mem::replace(&mut self.item, ::protobuf::RepeatedField::new())
+    }
+
+    pub fn get_item(&self) -> &[IndexItem] {
+        &self.item
+    }
+}
+
+impl ::protobuf::Message for Index {
+    fn is_initialized(&self) -> bool {
+        for v in &self.item {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.item)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        for value in &self.item {
+            let len = value.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        };
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        for v in &self.item {
+            os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
+        };
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> Index {
+        Index::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<IndexItem>>(
+                    "item",
+                    |m: &Index| { &m.item },
+                    |m: &mut Index| { &mut m.item },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<Index>(
+                    "Index",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static Index {
+        static mut instance: ::protobuf::lazy::Lazy<Index> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const Index,
+        };
+        unsafe {
+            instance.get(Index::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for Index {
+    fn clear(&mut self) {
+        self.clear_item();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for Index {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for Index {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct IndexItem {
+    // message fields
     pub identifier: ::std::string::String,
     pub first: ::std::string::String,
     pub last: ::std::string::String,
@@ -33,8 +203,8 @@ pub struct Index {
     pub cached_size: ::protobuf::CachedSize,
 }
 
-impl Index {
-    pub fn new() -> Index {
+impl IndexItem {
+    pub fn new() -> IndexItem {
         ::std::default::Default::default()
     }
 
@@ -132,7 +302,7 @@ impl Index {
     }
 }
 
-impl ::protobuf::Message for Index {
+impl ::protobuf::Message for IndexItem {
     fn is_initialized(&self) -> bool {
         true
     }
@@ -229,8 +399,8 @@ impl ::protobuf::Message for Index {
         Self::descriptor_static()
     }
 
-    fn new() -> Index {
-        Index::new()
+    fn new() -> IndexItem {
+        IndexItem::new()
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
@@ -243,26 +413,26 @@ impl ::protobuf::Message for Index {
                 let mut fields = ::std::vec::Vec::new();
                 fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                     "identifier",
-                    |m: &Index| { &m.identifier },
-                    |m: &mut Index| { &mut m.identifier },
+                    |m: &IndexItem| { &m.identifier },
+                    |m: &mut IndexItem| { &mut m.identifier },
                 ));
                 fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                     "first",
-                    |m: &Index| { &m.first },
-                    |m: &mut Index| { &mut m.first },
+                    |m: &IndexItem| { &m.first },
+                    |m: &mut IndexItem| { &mut m.first },
                 ));
                 fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                     "last",
-                    |m: &Index| { &m.last },
-                    |m: &mut Index| { &mut m.last },
+                    |m: &IndexItem| { &m.last },
+                    |m: &mut IndexItem| { &mut m.last },
                 ));
                 fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
                     "total",
-                    |m: &Index| { &m.total },
-                    |m: &mut Index| { &mut m.total },
+                    |m: &IndexItem| { &m.total },
+                    |m: &mut IndexItem| { &mut m.total },
                 ));
-                ::protobuf::reflect::MessageDescriptor::new::<Index>(
-                    "Index",
+                ::protobuf::reflect::MessageDescriptor::new::<IndexItem>(
+                    "IndexItem",
                     fields,
                     file_descriptor_proto()
                 )
@@ -270,18 +440,18 @@ impl ::protobuf::Message for Index {
         }
     }
 
-    fn default_instance() -> &'static Index {
-        static mut instance: ::protobuf::lazy::Lazy<Index> = ::protobuf::lazy::Lazy {
+    fn default_instance() -> &'static IndexItem {
+        static mut instance: ::protobuf::lazy::Lazy<IndexItem> = ::protobuf::lazy::Lazy {
             lock: ::protobuf::lazy::ONCE_INIT,
-            ptr: 0 as *const Index,
+            ptr: 0 as *const IndexItem,
         };
         unsafe {
-            instance.get(Index::new)
+            instance.get(IndexItem::new)
         }
     }
 }
 
-impl ::protobuf::Clear for Index {
+impl ::protobuf::Clear for IndexItem {
     fn clear(&mut self) {
         self.clear_identifier();
         self.clear_first();
@@ -291,22 +461,23 @@ impl ::protobuf::Clear for Index {
     }
 }
 
-impl ::std::fmt::Debug for Index {
+impl ::std::fmt::Debug for IndexItem {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for Index {
+impl ::protobuf::reflect::ProtobufValue for IndexItem {
     fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
         ::protobuf::reflect::ProtobufValueRef::Message(self)
     }
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x0bindex.proto\x12\0\"Q\n\x05Index\x12\x14\n\nidentifier\x18\x01\x20\
-    \x01(\tB\0\x12\x0f\n\x05first\x18\x02\x20\x01(\tB\0\x12\x0e\n\x04last\
-    \x18\x03\x20\x01(\tB\0\x12\x0f\n\x05total\x18\x04\x20\x01(\rB\0:\0B\0b\
+    \n\x0bindex.proto\x12\0\"%\n\x05Index\x12\x1a\n\x04item\x18\x01\x20\x03(\
+    \x0b2\n.IndexItemB\0:\0\"U\n\tIndexItem\x12\x14\n\nidentifier\x18\x01\
+    \x20\x01(\tB\0\x12\x0f\n\x05first\x18\x02\x20\x01(\tB\0\x12\x0e\n\x04las\
+    t\x18\x03\x20\x01(\tB\0\x12\x0f\n\x05total\x18\x04\x20\x01(\rB\0:\0B\0b\
     \x06proto3\
 ";
 

@@ -3,6 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "ProtoVerb.Core";
 
 message Index {
+    repeated IndexItem item = 1;
+}
+
+message IndexItem {
     string identifier = 1;
     string first = 2;
     string last = 3;
