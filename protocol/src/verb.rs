@@ -25,6 +25,14 @@ use protobuf::ProtobufEnum as ProtobufEnum_imported_for_functions;
 pub struct Verb {
     // message fields
     pub identifier: ::std::string::String,
+    pub url: ::std::string::String,
+    pub page_id: u32,
+    pub description: ::std::string::String,
+    pub etymology: ::std::string::String,
+    pub pronunciations: ::protobuf::RepeatedField<::std::string::String>,
+    pub related: ::protobuf::RepeatedField<::std::string::String>,
+    pub synonyms: ::protobuf::RepeatedField<::std::string::String>,
+    pub definitions: ::protobuf::RepeatedField<::std::string::String>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::CachedSize,
@@ -60,6 +68,199 @@ impl Verb {
     pub fn get_identifier(&self) -> &str {
         &self.identifier
     }
+
+    // string url = 2;
+
+    pub fn clear_url(&mut self) {
+        self.url.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_url(&mut self, v: ::std::string::String) {
+        self.url = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_url(&mut self) -> &mut ::std::string::String {
+        &mut self.url
+    }
+
+    // Take field
+    pub fn take_url(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.url, ::std::string::String::new())
+    }
+
+    pub fn get_url(&self) -> &str {
+        &self.url
+    }
+
+    // uint32 page_id = 3;
+
+    pub fn clear_page_id(&mut self) {
+        self.page_id = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_page_id(&mut self, v: u32) {
+        self.page_id = v;
+    }
+
+    pub fn get_page_id(&self) -> u32 {
+        self.page_id
+    }
+
+    // string description = 4;
+
+    pub fn clear_description(&mut self) {
+        self.description.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_description(&mut self, v: ::std::string::String) {
+        self.description = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_description(&mut self) -> &mut ::std::string::String {
+        &mut self.description
+    }
+
+    // Take field
+    pub fn take_description(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.description, ::std::string::String::new())
+    }
+
+    pub fn get_description(&self) -> &str {
+        &self.description
+    }
+
+    // string etymology = 5;
+
+    pub fn clear_etymology(&mut self) {
+        self.etymology.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_etymology(&mut self, v: ::std::string::String) {
+        self.etymology = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_etymology(&mut self) -> &mut ::std::string::String {
+        &mut self.etymology
+    }
+
+    // Take field
+    pub fn take_etymology(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.etymology, ::std::string::String::new())
+    }
+
+    pub fn get_etymology(&self) -> &str {
+        &self.etymology
+    }
+
+    // repeated string pronunciations = 6;
+
+    pub fn clear_pronunciations(&mut self) {
+        self.pronunciations.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_pronunciations(&mut self, v: ::protobuf::RepeatedField<::std::string::String>) {
+        self.pronunciations = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_pronunciations(&mut self) -> &mut ::protobuf::RepeatedField<::std::string::String> {
+        &mut self.pronunciations
+    }
+
+    // Take field
+    pub fn take_pronunciations(&mut self) -> ::protobuf::RepeatedField<::std::string::String> {
+        ::std::mem::replace(&mut self.pronunciations, ::protobuf::RepeatedField::new())
+    }
+
+    pub fn get_pronunciations(&self) -> &[::std::string::String] {
+        &self.pronunciations
+    }
+
+    // repeated string related = 7;
+
+    pub fn clear_related(&mut self) {
+        self.related.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_related(&mut self, v: ::protobuf::RepeatedField<::std::string::String>) {
+        self.related = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_related(&mut self) -> &mut ::protobuf::RepeatedField<::std::string::String> {
+        &mut self.related
+    }
+
+    // Take field
+    pub fn take_related(&mut self) -> ::protobuf::RepeatedField<::std::string::String> {
+        ::std::mem::replace(&mut self.related, ::protobuf::RepeatedField::new())
+    }
+
+    pub fn get_related(&self) -> &[::std::string::String] {
+        &self.related
+    }
+
+    // repeated string synonyms = 8;
+
+    pub fn clear_synonyms(&mut self) {
+        self.synonyms.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_synonyms(&mut self, v: ::protobuf::RepeatedField<::std::string::String>) {
+        self.synonyms = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_synonyms(&mut self) -> &mut ::protobuf::RepeatedField<::std::string::String> {
+        &mut self.synonyms
+    }
+
+    // Take field
+    pub fn take_synonyms(&mut self) -> ::protobuf::RepeatedField<::std::string::String> {
+        ::std::mem::replace(&mut self.synonyms, ::protobuf::RepeatedField::new())
+    }
+
+    pub fn get_synonyms(&self) -> &[::std::string::String] {
+        &self.synonyms
+    }
+
+    // repeated string definitions = 9;
+
+    pub fn clear_definitions(&mut self) {
+        self.definitions.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_definitions(&mut self, v: ::protobuf::RepeatedField<::std::string::String>) {
+        self.definitions = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_definitions(&mut self) -> &mut ::protobuf::RepeatedField<::std::string::String> {
+        &mut self.definitions
+    }
+
+    // Take field
+    pub fn take_definitions(&mut self) -> ::protobuf::RepeatedField<::std::string::String> {
+        ::std::mem::replace(&mut self.definitions, ::protobuf::RepeatedField::new())
+    }
+
+    pub fn get_definitions(&self) -> &[::std::string::String] {
+        &self.definitions
+    }
 }
 
 impl ::protobuf::Message for Verb {
@@ -73,6 +274,34 @@ impl ::protobuf::Message for Verb {
             match field_number {
                 1 => {
                     ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.identifier)?;
+                },
+                2 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.url)?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint32()?;
+                    self.page_id = tmp;
+                },
+                4 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.description)?;
+                },
+                5 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.etymology)?;
+                },
+                6 => {
+                    ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.pronunciations)?;
+                },
+                7 => {
+                    ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.related)?;
+                },
+                8 => {
+                    ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.synonyms)?;
+                },
+                9 => {
+                    ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.definitions)?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -89,6 +318,30 @@ impl ::protobuf::Message for Verb {
         if !self.identifier.is_empty() {
             my_size += ::protobuf::rt::string_size(1, &self.identifier);
         }
+        if !self.url.is_empty() {
+            my_size += ::protobuf::rt::string_size(2, &self.url);
+        }
+        if self.page_id != 0 {
+            my_size += ::protobuf::rt::value_size(3, self.page_id, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if !self.description.is_empty() {
+            my_size += ::protobuf::rt::string_size(4, &self.description);
+        }
+        if !self.etymology.is_empty() {
+            my_size += ::protobuf::rt::string_size(5, &self.etymology);
+        }
+        for value in &self.pronunciations {
+            my_size += ::protobuf::rt::string_size(6, &value);
+        };
+        for value in &self.related {
+            my_size += ::protobuf::rt::string_size(7, &value);
+        };
+        for value in &self.synonyms {
+            my_size += ::protobuf::rt::string_size(8, &value);
+        };
+        for value in &self.definitions {
+            my_size += ::protobuf::rt::string_size(9, &value);
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
@@ -98,6 +351,30 @@ impl ::protobuf::Message for Verb {
         if !self.identifier.is_empty() {
             os.write_string(1, &self.identifier)?;
         }
+        if !self.url.is_empty() {
+            os.write_string(2, &self.url)?;
+        }
+        if self.page_id != 0 {
+            os.write_uint32(3, self.page_id)?;
+        }
+        if !self.description.is_empty() {
+            os.write_string(4, &self.description)?;
+        }
+        if !self.etymology.is_empty() {
+            os.write_string(5, &self.etymology)?;
+        }
+        for v in &self.pronunciations {
+            os.write_string(6, &v)?;
+        };
+        for v in &self.related {
+            os.write_string(7, &v)?;
+        };
+        for v in &self.synonyms {
+            os.write_string(8, &v)?;
+        };
+        for v in &self.definitions {
+            os.write_string(9, &v)?;
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -145,6 +422,46 @@ impl ::protobuf::Message for Verb {
                     |m: &Verb| { &m.identifier },
                     |m: &mut Verb| { &mut m.identifier },
                 ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "url",
+                    |m: &Verb| { &m.url },
+                    |m: &mut Verb| { &mut m.url },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
+                    "page_id",
+                    |m: &Verb| { &m.page_id },
+                    |m: &mut Verb| { &mut m.page_id },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "description",
+                    |m: &Verb| { &m.description },
+                    |m: &mut Verb| { &mut m.description },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "etymology",
+                    |m: &Verb| { &m.etymology },
+                    |m: &mut Verb| { &mut m.etymology },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "pronunciations",
+                    |m: &Verb| { &m.pronunciations },
+                    |m: &mut Verb| { &mut m.pronunciations },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "related",
+                    |m: &Verb| { &m.related },
+                    |m: &mut Verb| { &mut m.related },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "synonyms",
+                    |m: &Verb| { &m.synonyms },
+                    |m: &mut Verb| { &mut m.synonyms },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "definitions",
+                    |m: &Verb| { &m.definitions },
+                    |m: &mut Verb| { &mut m.definitions },
+                ));
                 ::protobuf::reflect::MessageDescriptor::new::<Verb>(
                     "Verb",
                     fields,
@@ -168,6 +485,14 @@ impl ::protobuf::Message for Verb {
 impl ::protobuf::Clear for Verb {
     fn clear(&mut self) {
         self.clear_identifier();
+        self.clear_url();
+        self.clear_page_id();
+        self.clear_description();
+        self.clear_etymology();
+        self.clear_pronunciations();
+        self.clear_related();
+        self.clear_synonyms();
+        self.clear_definitions();
         self.unknown_fields.clear();
     }
 }
@@ -185,8 +510,13 @@ impl ::protobuf::reflect::ProtobufValue for Verb {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\nverb.proto\x12\0\"\x1e\n\x04Verb\x12\x14\n\nidentifier\x18\x01\x20\
-    \x01(\tB\0:\0B\0b\x06proto3\
+    \n\nverb.proto\x12\0\"\xc4\x01\n\x04Verb\x12\x14\n\nidentifier\x18\x01\
+    \x20\x01(\tB\0\x12\r\n\x03url\x18\x02\x20\x01(\tB\0\x12\x11\n\x07page_id\
+    \x18\x03\x20\x01(\rB\0\x12\x15\n\x0bdescription\x18\x04\x20\x01(\tB\0\
+    \x12\x13\n\tetymology\x18\x05\x20\x01(\tB\0\x12\x18\n\x0epronunciations\
+    \x18\x06\x20\x03(\tB\0\x12\x11\n\x07related\x18\x07\x20\x03(\tB\0\x12\
+    \x12\n\x08synonyms\x18\x08\x20\x03(\tB\0\x12\x15\n\x0bdefinitions\x18\t\
+    \x20\x03(\tB\0:\0B\0b\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {

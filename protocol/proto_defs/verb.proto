@@ -2,4 +2,12 @@ syntax = "proto3";
 
 message Verb {
     string identifier = 1;
+    string url = 2;
+    uint32 page_id = 3;
+    string description = 4;
+    string etymology = 5;
+    repeated string pronunciations = 6;
+    repeated string related = 7;
+    repeated string synonyms = 8;
+    repeated string definitions = 9;
 }
