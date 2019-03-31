@@ -10,4 +10,13 @@ message Verb {
     repeated string related = 7;
     repeated string synonyms = 8;
     repeated string definitions = 9;
+    repeated Conjugation conjugations = 10;
+}
+
+message Conjugation {
+    string group = 1;
+    uint32 sort = 2;
+    uint32 group_sort = 3;
+    string form = 4;
+    string identifier = 5;
 }

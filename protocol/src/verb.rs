@@ -33,6 +33,7 @@ pub struct Verb {
     pub related: ::protobuf::RepeatedField<::std::string::String>,
     pub synonyms: ::protobuf::RepeatedField<::std::string::String>,
     pub definitions: ::protobuf::RepeatedField<::std::string::String>,
+    pub conjugations: ::protobuf::RepeatedField<Conjugation>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::CachedSize,
@@ -261,10 +262,40 @@ impl Verb {
     pub fn get_definitions(&self) -> &[::std::string::String] {
         &self.definitions
     }
+
+    // repeated .Conjugation conjugations = 10;
+
+    pub fn clear_conjugations(&mut self) {
+        self.conjugations.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_conjugations(&mut self, v: ::protobuf::RepeatedField<Conjugation>) {
+        self.conjugations = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_conjugations(&mut self) -> &mut ::protobuf::RepeatedField<Conjugation> {
+        &mut self.conjugations
+    }
+
+    // Take field
+    pub fn take_conjugations(&mut self) -> ::protobuf::RepeatedField<Conjugation> {
+        ::std::mem::replace(&mut self.conjugations, ::protobuf::RepeatedField::new())
+    }
+
+    pub fn get_conjugations(&self) -> &[Conjugation] {
+        &self.conjugations
+    }
 }
 
 impl ::protobuf::Message for Verb {
     fn is_initialized(&self) -> bool {
+        for v in &self.conjugations {
+            if !v.is_initialized() {
+                return false;
+            }
+        };
         true
     }
 
@@ -302,6 +333,9 @@ impl ::protobuf::Message for Verb {
                 },
                 9 => {
                     ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.definitions)?;
+                },
+                10 => {
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.conjugations)?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -342,6 +376,10 @@ impl ::protobuf::Message for Verb {
         for value in &self.definitions {
             my_size += ::protobuf::rt::string_size(9, &value);
         };
+        for value in &self.conjugations {
+            let len = value.compute_size();
+            my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
@@ -374,6 +412,11 @@ impl ::protobuf::Message for Verb {
         };
         for v in &self.definitions {
             os.write_string(9, &v)?;
+        };
+        for v in &self.conjugations {
+            os.write_tag(10, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+            os.write_raw_varint32(v.get_cached_size())?;
+            v.write_to_with_cached_sizes(os)?;
         };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -462,6 +505,11 @@ impl ::protobuf::Message for Verb {
                     |m: &Verb| { &m.definitions },
                     |m: &mut Verb| { &mut m.definitions },
                 ));
+                fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<Conjugation>>(
+                    "conjugations",
+                    |m: &Verb| { &m.conjugations },
+                    |m: &mut Verb| { &mut m.conjugations },
+                ));
                 ::protobuf::reflect::MessageDescriptor::new::<Verb>(
                     "Verb",
                     fields,
@@ -493,6 +541,7 @@ impl ::protobuf::Clear for Verb {
         self.clear_related();
         self.clear_synonyms();
         self.clear_definitions();
+        self.clear_conjugations();
         self.unknown_fields.clear();
     }
 }
@@ -509,14 +558,335 @@ impl ::protobuf::reflect::ProtobufValue for Verb {
     }
 }
 
+#[derive(PartialEq,Clone,Default)]
+pub struct Conjugation {
+    // message fields
+    pub group: ::std::string::String,
+    pub sort: u32,
+    pub group_sort: u32,
+    pub form: ::std::string::String,
+    pub identifier: ::std::string::String,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl Conjugation {
+    pub fn new() -> Conjugation {
+        ::std::default::Default::default()
+    }
+
+    // string group = 1;
+
+    pub fn clear_group(&mut self) {
+        self.group.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_group(&mut self, v: ::std::string::String) {
+        self.group = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_group(&mut self) -> &mut ::std::string::String {
+        &mut self.group
+    }
+
+    // Take field
+    pub fn take_group(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.group, ::std::string::String::new())
+    }
+
+    pub fn get_group(&self) -> &str {
+        &self.group
+    }
+
+    // uint32 sort = 2;
+
+    pub fn clear_sort(&mut self) {
+        self.sort = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sort(&mut self, v: u32) {
+        self.sort = v;
+    }
+
+    pub fn get_sort(&self) -> u32 {
+        self.sort
+    }
+
+    // uint32 group_sort = 3;
+
+    pub fn clear_group_sort(&mut self) {
+        self.group_sort = 0;
+    }
+
+    // Param is passed by value, moved
+    pub fn set_group_sort(&mut self, v: u32) {
+        self.group_sort = v;
+    }
+
+    pub fn get_group_sort(&self) -> u32 {
+        self.group_sort
+    }
+
+    // string form = 4;
+
+    pub fn clear_form(&mut self) {
+        self.form.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_form(&mut self, v: ::std::string::String) {
+        self.form = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_form(&mut self) -> &mut ::std::string::String {
+        &mut self.form
+    }
+
+    // Take field
+    pub fn take_form(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.form, ::std::string::String::new())
+    }
+
+    pub fn get_form(&self) -> &str {
+        &self.form
+    }
+
+    // string identifier = 5;
+
+    pub fn clear_identifier(&mut self) {
+        self.identifier.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_identifier(&mut self, v: ::std::string::String) {
+        self.identifier = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_identifier(&mut self) -> &mut ::std::string::String {
+        &mut self.identifier
+    }
+
+    // Take field
+    pub fn take_identifier(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.identifier, ::std::string::String::new())
+    }
+
+    pub fn get_identifier(&self) -> &str {
+        &self.identifier
+    }
+}
+
+impl ::protobuf::Message for Conjugation {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.group)?;
+                },
+                2 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint32()?;
+                    self.sort = tmp;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    let tmp = is.read_uint32()?;
+                    self.group_sort = tmp;
+                },
+                4 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.form)?;
+                },
+                5 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.identifier)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.group.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.group);
+        }
+        if self.sort != 0 {
+            my_size += ::protobuf::rt::value_size(2, self.sort, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if self.group_sort != 0 {
+            my_size += ::protobuf::rt::value_size(3, self.group_sort, ::protobuf::wire_format::WireTypeVarint);
+        }
+        if !self.form.is_empty() {
+            my_size += ::protobuf::rt::string_size(4, &self.form);
+        }
+        if !self.identifier.is_empty() {
+            my_size += ::protobuf::rt::string_size(5, &self.identifier);
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
+        if !self.group.is_empty() {
+            os.write_string(1, &self.group)?;
+        }
+        if self.sort != 0 {
+            os.write_uint32(2, self.sort)?;
+        }
+        if self.group_sort != 0 {
+            os.write_uint32(3, self.group_sort)?;
+        }
+        if !self.form.is_empty() {
+            os.write_string(4, &self.form)?;
+        }
+        if !self.identifier.is_empty() {
+            os.write_string(5, &self.identifier)?;
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &::std::any::Any {
+        self as &::std::any::Any
+    }
+    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
+        self as &mut ::std::any::Any
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> Conjugation {
+        Conjugation::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
+        };
+        unsafe {
+            descriptor.get(|| {
+                let mut fields = ::std::vec::Vec::new();
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "group",
+                    |m: &Conjugation| { &m.group },
+                    |m: &mut Conjugation| { &mut m.group },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
+                    "sort",
+                    |m: &Conjugation| { &m.sort },
+                    |m: &mut Conjugation| { &mut m.sort },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
+                    "group_sort",
+                    |m: &Conjugation| { &m.group_sort },
+                    |m: &mut Conjugation| { &mut m.group_sort },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "form",
+                    |m: &Conjugation| { &m.form },
+                    |m: &mut Conjugation| { &mut m.form },
+                ));
+                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                    "identifier",
+                    |m: &Conjugation| { &m.identifier },
+                    |m: &mut Conjugation| { &mut m.identifier },
+                ));
+                ::protobuf::reflect::MessageDescriptor::new::<Conjugation>(
+                    "Conjugation",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static Conjugation {
+        static mut instance: ::protobuf::lazy::Lazy<Conjugation> = ::protobuf::lazy::Lazy {
+            lock: ::protobuf::lazy::ONCE_INIT,
+            ptr: 0 as *const Conjugation,
+        };
+        unsafe {
+            instance.get(Conjugation::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for Conjugation {
+    fn clear(&mut self) {
+        self.clear_group();
+        self.clear_sort();
+        self.clear_group_sort();
+        self.clear_form();
+        self.clear_identifier();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for Conjugation {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for Conjugation {
+    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
+        ::protobuf::reflect::ProtobufValueRef::Message(self)
+    }
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\nverb.proto\x12\0\"\xc4\x01\n\x04Verb\x12\x14\n\nidentifier\x18\x01\
+    \n\nverb.proto\x12\0\"\xea\x01\n\x04Verb\x12\x14\n\nidentifier\x18\x01\
     \x20\x01(\tB\0\x12\r\n\x03url\x18\x02\x20\x01(\tB\0\x12\x11\n\x07page_id\
     \x18\x03\x20\x01(\rB\0\x12\x15\n\x0bdescription\x18\x04\x20\x01(\tB\0\
     \x12\x13\n\tetymology\x18\x05\x20\x01(\tB\0\x12\x18\n\x0epronunciations\
     \x18\x06\x20\x03(\tB\0\x12\x11\n\x07related\x18\x07\x20\x03(\tB\0\x12\
     \x12\n\x08synonyms\x18\x08\x20\x03(\tB\0\x12\x15\n\x0bdefinitions\x18\t\
-    \x20\x03(\tB\0:\0B\0b\x06proto3\
+    \x20\x03(\tB\0\x12$\n\x0cconjugations\x18\n\x20\x03(\x0b2\x0c.Conjugatio\
+    nB\0:\0\"l\n\x0bConjugation\x12\x0f\n\x05group\x18\x01\x20\x01(\tB\0\x12\
+    \x0e\n\x04sort\x18\x02\x20\x01(\rB\0\x12\x14\n\ngroup_sort\x18\x03\x20\
+    \x01(\rB\0\x12\x0e\n\x04form\x18\x04\x20\x01(\tB\0\x12\x14\n\nidentifier\
+    \x18\x05\x20\x01(\tB\0:\0B\0b\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {
