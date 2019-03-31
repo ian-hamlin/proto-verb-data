@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message Verb {
+    string identifier = 1;
+}

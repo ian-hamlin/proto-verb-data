@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Index {
+    string identifier = 1;
+    string first = 2;
+    string last = 3;
+    uint32 total = 4;
+}

@@ -1,0 +1,8 @@
+[package]
+name = "proto-verb-data"
+version = "0.1.0"
+authors = ["ian@ihamlin.co.uk"]
+edition = "2018"
+
+[dependencies]
+protocol = { path = "protocol" }
