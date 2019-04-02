@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["ian@ihamlin.co.uk"]
 edition = "2018"
 
+[workspace]
+members = ["protocol"]
+
 [dependencies]
 protobuf = "2.4.2"
 protocol = { path = "protocol" }
